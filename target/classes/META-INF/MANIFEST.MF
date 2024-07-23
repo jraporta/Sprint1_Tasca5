@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Build-Jdk-Spec: 17
-Class-Path: junit-jupiter-5.10.3.jar junit-jupiter-api-5.10.3.jar opente
- st4j-1.3.0.jar junit-platform-commons-1.10.3.jar apiguardian-api-1.1.2.
- jar junit-jupiter-params-5.10.3.jar junit-jupiter-engine-5.10.3.jar jun
- it-platform-engine-1.10.3.jar
-Main-Class: n1exercici1.App
-Created-By: Maven Integration for Eclipse
-
