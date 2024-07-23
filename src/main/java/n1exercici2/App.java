@@ -3,17 +3,21 @@ package n1exercici2;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class App {
 	
 	public static enum Option{
-		ALL ,TYPE 
+		ALL ,TYPE, DATE
 	}
+	private static List<Option> options = new ArrayList<Option>();
 
 	public static void main(String[] args) {
 		Path path = null;
-		Directori directori = null;
 		
+				
 		if(args.length == 0) {
 			System.out.println("expected: path of a directory");
 			return;
@@ -25,19 +29,32 @@ public class App {
 			System.out.printf("%s is not a valid directory path", args[0]);
 			return;
 		}
-		
-		System.out.println("Directory Explorer v0.2");
-		
-		directori = new Directori(path.getFileName().toString(), path);
-//		directori.actualitzaContingut();
-//		System.out.printf("%s", directori.mostraContingut());
-		mostraTotContingut(directori);
+		readOptions(Arrays.copyOfRange(args, 1, args.length));
+		mostraTotContingut(path);
 	}
 	
 	
-	private static void mostraTotContingut(Directori directori) {
+	private static void readOptions(String[] args) {
+		for(String arg : args) {
+			switch (arg) {
+			case "-d": case "-D":
+				options.add(App.Option.DATE);
+				break;
+			case "-t": case "-T":
+				options.add(App.Option.TYPE);
+				break;
+			case "-a": case "-A":
+				options.add(App.Option.ALL);
+				break;
+			}	
+		}
+	}
+
+
+	private static void mostraTotContingut(Path path) {
 		Element.resetTreeDrawer();
-		directori.showContent(App.Option.ALL, App.Option.TYPE);;
+		Directori directori = new Directori(path.getFileName().toString(), path);
+		directori.showContent(options.toArray(new Option[0]));
 	}
 
 

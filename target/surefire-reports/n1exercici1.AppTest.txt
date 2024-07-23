@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: n1exercici1.AppTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.082 s -- in n1exercici1.AppTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.085 s -- in n1exercici1.AppTest

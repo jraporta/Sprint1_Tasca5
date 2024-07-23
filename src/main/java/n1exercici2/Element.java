@@ -4,11 +4,16 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.attribute.FileTime;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 
 public class Element implements Comparable<Element> {
 	
 	private String nom;
 	private Path path;
+	private FileTime lastModified;
 	private static TreeDrawer treeDrawer;
 	
 	static {
@@ -19,6 +24,12 @@ public class Element implements Comparable<Element> {
 		if (!Files.exists(path)){
 			throw new UncheckedIOException(new IOException(
 					String.format("Path '%s' does not point to a directory or file", path)));
+		}
+		try {
+			this.lastModified = Files.getLastModifiedTime(path);
+		} catch (IOException e) {
+			System.err.printf("Error when retrieving last modified date of %s%n%s", this.path, e.getMessage());
+			this.lastModified = null;
 		}
 		this.nom = nom;
 		this.path = path;
@@ -37,6 +48,14 @@ public class Element implements Comparable<Element> {
 	public static TreeDrawer getTreeDrawer() {
 		return treeDrawer;
 	}
+	public String getLastModified() {
+		if (this.lastModified == null) {
+			return "unknown";
+		}
+		return "(Last modified: " + DateTimeFormatter.ofPattern("yyyy-MMM-dd HH:mm:ss").
+				format(LocalDateTime.ofInstant(lastModified.toInstant(), ZoneId.systemDefault())) + ")";
+	}
+
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
@@ -65,6 +84,7 @@ public class Element implements Comparable<Element> {
 		return this.nom.compareTo(o.nom);
 	}
 
+	
 	
 
 }

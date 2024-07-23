@@ -75,6 +75,9 @@ public class Directori extends Element{
 				if (Arrays.asList(options).contains(App.Option.TYPE)) {
 					System.out.print(this.elements.get(i) instanceof Directori ? " (D)" : " (F)");
 				}
+				if (Arrays.asList(options).contains(App.Option.DATE)) {
+					System.out.printf(" %s", this.elements.get(i).getLastModified());
+				}
 				if (Arrays.asList(options).contains(App.Option.ALL) &&
 						this.elements.get(i) instanceof Directori) {
 					((Directori) this.elements.get(i)).showContent(options);
