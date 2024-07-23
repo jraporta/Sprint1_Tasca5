@@ -30,12 +30,17 @@ public class App {
 	
 	public static Path llegeixPath(String arg) {
 		Path path = null;
-		try {
-			path = Path.of(arg).toRealPath();
-		} catch (IOException e) {
-			path = null;
+		if (arg != null){
+			try {
+				path = Path.of(arg).toRealPath();
+				if (!Files.isDirectory(path)) {
+					path = null;
+				}
+			} catch (IOException e) {
+				path = null;
+			}
 		}
-		return Files.isDirectory(path) ? path : null;
+		return path;
 	}
 
 }
