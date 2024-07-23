@@ -5,6 +5,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class App {
+	
+	public static enum Option{
+		ALL ,TYPE 
+	}
 
 	public static void main(String[] args) {
 		Path path = null;
@@ -27,13 +31,13 @@ public class App {
 		directori = new Directori(path.getFileName().toString(), path);
 //		directori.actualitzaContingut();
 //		System.out.printf("%s", directori.mostraContingut());
-		System.out.println(mostraTotContingut(directori));
+		mostraTotContingut(directori);
 	}
 	
 	
-	private static String mostraTotContingut(Directori directori) {
-		Element.resetDepth();
-		return directori.mostraTotContingut();
+	private static void mostraTotContingut(Directori directori) {
+		Element.resetTreeDrawer();
+		directori.showContent(App.Option.ALL, App.Option.TYPE);;
 	}
 
 

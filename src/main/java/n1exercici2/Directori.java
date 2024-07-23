@@ -14,10 +14,7 @@ import java.util.List;
 public class Directori extends Element{
 	
 	private List<Element> elements;
-	private int elementsNoAccessibles;
-	private enum Option{
-		ALL, TYPE 
-	}
+	private int nonAccessibleElements;	
 
 	public Directori(String nom, Path path) {
 		super(nom, path);
@@ -25,25 +22,25 @@ public class Directori extends Element{
 			throw new UncheckedIOException(new IOException("path does not point to a directory"));
 		}
 		this.elements = new ArrayList<Element>();
-		this.elementsNoAccessibles = 0;
+		this.nonAccessibleElements = 0;
 	}
 
 	public Directori(Path path) {
 		this(path.getFileName().toString(),path);
 	}
 
-	public List<Element> getElements() {
-		return elements;
+	public Element getElement(int i) {
+		return elements.get(i);
 	}
 
 	public void setElement(Element element) {
 		this.elements.add(element);
 	}
 
-	public void actualitzaContingut() {
+	public void updateContent() {
 		super.checkIsStillThere();
 		this.elements.clear();
-		this.elementsNoAccessibles = 0;
+		this.nonAccessibleElements = 0;
 		try {
 			for(Iterator<Path> paths = Files.newDirectoryStream(getPath()).iterator(); paths.hasNext(); ) {
 				Path p = paths.next();
@@ -54,7 +51,7 @@ public class Directori extends Element{
 						this.setElement(new Fitxer(p));
 					}
 				}else {
-					this.elementsNoAccessibles++;
+					this.nonAccessibleElements++;
 				}
 			}
 		} catch (IOException e) {
@@ -63,31 +60,33 @@ public class Directori extends Element{
 		}
 	}
 
-	public String mostraContingut(Directori.Option... option) {
-		String resposta = "";
-		resposta += Element.depth == 0 ? String.format("%s%s\\",(" ").repeat(depth), super.getPath()) : "";
-		Collections.sort(this.elements);
-		for (int i = 0; i < this.elements.size(); i++) {
-			resposta += String.format("%n %s%s%s", ("|").repeat(depth), i < this.elements.size() - 1? "\u251C" : "\u2514", this.elements.get(i).getNom());
-			if (Arrays.asList(option).contains(Directori.Option.TYPE)) {
-				resposta += this.elements.get(i) instanceof Directori ? " (D)" : " (F)";
+	public void showContent(App.Option... options) {
+		updateContent();
+		System.out.print(Element.getTreeDrawer().isEmpty() ? super.getPath() : "");
+		if (! this.elements.isEmpty()) {
+			Element.getTreeDrawer().goDeeper();
+			Collections.sort(this.elements);
+			for (int i = 0; i < this.elements.size(); i++) {
+				if(i == this.elements.size() - 1) {
+					Element.getTreeDrawer().setLastItem();
+				}
+				Element.getTreeDrawer().next();
+				System.out.printf("%n%s%s", Element.getTreeDrawer(), this.elements.get(i).getNom());
+				if (Arrays.asList(options).contains(App.Option.TYPE)) {
+					System.out.print(this.elements.get(i) instanceof Directori ? " (D)" : " (F)");
+				}
+				if (Arrays.asList(options).contains(App.Option.ALL) &&
+						this.elements.get(i) instanceof Directori) {
+					((Directori) this.elements.get(i)).showContent(options);
+				}
 			}
-			if (Arrays.asList(option).contains(Directori.Option.ALL) &&
-					this.elements.get(i) instanceof Directori) {
-				resposta += ((Directori) this.elements.get(i)).mostraTotContingut();
-			}
-		}
-		resposta += this.elementsNoAccessibles > 0 ? 
-				String.format("%n  + %d elements \"inexistents\"", this.elementsNoAccessibles) : "";
-		return resposta;
-	}
-	
-	public 	String mostraTotContingut() {
-		Element.depth ++;
-		actualitzaContingut();
-		String s = mostraContingut(Directori.Option.ALL, Directori.Option.TYPE);
-		Element.depth --;
-		return s;
+			if(this.nonAccessibleElements > 0) {
+				System.out.printf("%n%s+ %d \"non-existing\" elements:",
+						Element.getTreeDrawer(), this.nonAccessibleElements);
+			}	
+			Element.getTreeDrawer().goShallower();
+			this.elements.clear();
+		}		
 	}
 
 }

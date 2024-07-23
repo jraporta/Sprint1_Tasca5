@@ -9,7 +9,11 @@ public class Element implements Comparable<Element> {
 	
 	private String nom;
 	private Path path;
-	protected static int depth;
+	private static TreeDrawer treeDrawer;
+	
+	static {
+		treeDrawer = null;
+	}
 	
 	public Element(String nom, Path path) {
 		if (!Files.exists(path)){
@@ -30,15 +34,18 @@ public class Element implements Comparable<Element> {
 	public Path getPath() {
 		return path;
 	}
+	public static TreeDrawer getTreeDrawer() {
+		return treeDrawer;
+	}
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 	public void setPath(Path path) {
 		this.path = path;
 	}
-	
-	public static void resetDepth() {
-		Element.depth = -1;
+
+	public static void resetTreeDrawer() {
+		Element.treeDrawer = new TreeDrawer();
 	}
 	
 	protected void checkIsStillThere() throws UncheckedIOException{
@@ -57,5 +64,7 @@ public class Element implements Comparable<Element> {
 	public int compareTo(Element o) {
 		return this.nom.compareTo(o.nom);
 	}
+
+	
 
 }
