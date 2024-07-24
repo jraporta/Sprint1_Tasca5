@@ -2,6 +2,7 @@ package n1exercici5;
 
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.io.UncheckedIOException;
@@ -109,6 +110,19 @@ public class Directori extends Element implements Serializable{
 			e.printStackTrace();
 		}
 		
+	}
+
+	public static Directori unserialize() {
+		Directori directori = null;
+		System.out.println("\n unserializing object...");
+		try (ObjectInputStream objectInputStream = new ObjectInputStream(Files.newInputStream(Path.of("save.ser")))){
+			Object obj = objectInputStream.readObject();
+			directori = (Directori) obj;
+		} catch (Exception e) {
+			System.err.println("Error unserializing the Directori object: " + e.getMessage());
+			e.printStackTrace();
+		}
+		return directori;
 	}
 	
 	

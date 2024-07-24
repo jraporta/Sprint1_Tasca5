@@ -33,6 +33,8 @@ public class App {
 				System.out.printf("%s is not a valid directory path", args[0]);
 			}
 			break;
+		case "last":
+			printDirectoryContent(Directori.unserialize());
 		default:
 			path =	toPath(args[0]);
 			if(path == null || !Files.isDirectory(path)) {
