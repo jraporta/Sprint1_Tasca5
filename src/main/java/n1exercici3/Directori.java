@@ -1,4 +1,4 @@
-package n1exercici2;
+package n1exercici3;
 
 
 import java.io.IOException;
