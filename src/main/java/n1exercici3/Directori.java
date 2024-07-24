@@ -70,7 +70,6 @@ public class Directori extends Element{
 				if(i == this.elements.size() - 1) {
 					Element.getTreeDrawer().setLastItem();
 				}
-				Element.getTreeDrawer().next();
 				printElementfromDirectory(this.elements.get(i), options);
 				if (Arrays.asList(options).contains(App.Option.ALL) &&
 						this.elements.get(i) instanceof Directori) {
@@ -87,6 +86,7 @@ public class Directori extends Element{
 	}
 
 	private void printElementfromDirectory(Element element, App.Option... options) {
+		Element.getTreeDrawer().next();
 		System.out.printf("%n%s%s", Element.getTreeDrawer(), element.getNom());
 		if (Arrays.asList(options).contains(App.Option.TYPE)) {
 			System.out.print(element instanceof Directori ? " (D)" : " (F)");

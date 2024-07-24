@@ -1,61 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="n1exercici1.AppTest" time="0.083" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="n1exercici1.AppTest" time="0.042" tests="2" errors="0" skipped="0" failures="0">
   <properties>
-    <property name="java.specification.version" value="17"/>
+    <property name="java.specification.version" value="15"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="C:\Users\Manteniment\eclipse-workspace\sprint1-tasca5\target\test-classes;C:\Users\Manteniment\eclipse-workspace\sprint1-tasca5\target\classes;C:\Users\Manteniment\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.3\junit-jupiter-5.10.3.jar;C:\Users\Manteniment\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.3\junit-jupiter-api-5.10.3.jar;C:\Users\Manteniment\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Manteniment\.m2\repository\org\junit\platform\junit-platform-commons\1.10.3\junit-platform-commons-1.10.3.jar;C:\Users\Manteniment\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Manteniment\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.3\junit-jupiter-params-5.10.3.jar;C:\Users\Manteniment\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.3\junit-jupiter-engine-5.10.3.jar;C:\Users\Manteniment\.m2\repository\org\junit\platform\junit-platform-engine\1.10.3\junit-platform-engine-1.10.3.jar;"/>
+    <property name="java.class.path" value="C:\Users\formacio\Documents\juanra\Sprint1_Tasca5\target\test-classes;C:\Users\formacio\Documents\juanra\Sprint1_Tasca5\target\classes;C:\Users\formacio\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.3\junit-jupiter-5.10.3.jar;C:\Users\formacio\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.3\junit-jupiter-api-5.10.3.jar;C:\Users\formacio\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\formacio\.m2\repository\org\junit\platform\junit-platform-commons\1.10.3\junit-platform-commons-1.10.3.jar;C:\Users\formacio\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\formacio\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.3\junit-jupiter-params-5.10.3.jar;C:\Users\formacio\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.3\junit-jupiter-engine-5.10.3.jar;C:\Users\formacio\.m2\repository\org\junit\platform\junit-platform-engine\1.10.3\junit-platform-engine-1.10.3.jar;"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
     <property name="java.vendor.url" value="https://java.oracle.com/"/>
     <property name="user.timezone" value="Europe/Madrid"/>
     <property name="os.name" value="Windows 10"/>
-    <property name="java.vm.specification.version" value="17"/>
+    <property name="java.vm.specification.version" value="15"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="ES"/>
-    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17\bin"/>
-    <property name="sun.java.command" value="C:\Users\Manteniment\AppData\Local\Temp\surefire14554392579580558792\surefirebooter-20240723225339163_3.jar C:\Users\Manteniment\AppData\Local\Temp\surefire14554392579580558792 2024-07-23T22-53-38_896-jvmRun1 surefire-20240723225339163_1tmp surefire_0-20240723225339163_2tmp"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-15.0.2\bin"/>
+    <property name="sun.java.command" value="C:\Users\formacio\AppData\Local\Temp\surefire5535244465835134017\surefirebooter-20240724105539861_3.jar C:\Users\formacio\AppData\Local\Temp\surefire5535244465835134017 2024-07-24T10-55-39_730-jvmRun1 surefire-20240724105539861_1tmp surefire_0-20240724105539861_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="C:\Users\Manteniment\eclipse-workspace\sprint1-tasca5\target\test-classes;C:\Users\Manteniment\eclipse-workspace\sprint1-tasca5\target\classes;C:\Users\Manteniment\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.3\junit-jupiter-5.10.3.jar;C:\Users\Manteniment\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.3\junit-jupiter-api-5.10.3.jar;C:\Users\Manteniment\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Manteniment\.m2\repository\org\junit\platform\junit-platform-commons\1.10.3\junit-platform-commons-1.10.3.jar;C:\Users\Manteniment\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Manteniment\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.3\junit-jupiter-params-5.10.3.jar;C:\Users\Manteniment\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.3\junit-jupiter-engine-5.10.3.jar;C:\Users\Manteniment\.m2\repository\org\junit\platform\junit-platform-engine\1.10.3\junit-platform-engine-1.10.3.jar;"/>
+    <property name="surefire.test.class.path" value="C:\Users\formacio\Documents\juanra\Sprint1_Tasca5\target\test-classes;C:\Users\formacio\Documents\juanra\Sprint1_Tasca5\target\classes;C:\Users\formacio\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.3\junit-jupiter-5.10.3.jar;C:\Users\formacio\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.3\junit-jupiter-api-5.10.3.jar;C:\Users\formacio\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\formacio\.m2\repository\org\junit\platform\junit-platform-commons\1.10.3\junit-platform-commons-1.10.3.jar;C:\Users\formacio\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\formacio\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.3\junit-jupiter-params-5.10.3.jar;C:\Users\formacio\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.3\junit-jupiter-engine-5.10.3.jar;C:\Users\formacio\.m2\repository\org\junit\platform\junit-platform-engine\1.10.3\junit-platform-engine-1.10.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
-    <property name="user.home" value="C:\Users\Manteniment"/>
+    <property name="user.home" value="C:\Users\formacio"/>
     <property name="user.language" value="es"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="java.version.date" value="2024-04-16"/>
-    <property name="java.home" value="C:\Program Files\Java\jdk-17"/>
+    <property name="java.version.date" value="2021-01-19"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-15.0.2"/>
     <property name="file.separator" value="\"/>
-    <property name="basedir" value="C:\Users\Manteniment\eclipse-workspace\sprint1-tasca5"/>
-    <property name="java.vm.compressedOopsMode" value="32-bit"/>
+    <property name="basedir" value="C:\Users\formacio\Documents\juanra\Sprint1_Tasca5"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Manteniment\AppData\Local\Temp\surefire14554392579580558792\surefirebooter-20240723225339163_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\formacio\AppData\Local\Temp\surefire5535244465835134017\surefirebooter-20240724105539861_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="java.runtime.version" value="17.0.11+7-LTS-207"/>
-    <property name="user.name" value="Manteniment"/>
+    <property name="java.runtime.version" value="15.0.2+7-27"/>
+    <property name="user.name" value="formacio"/>
     <property name="path.separator" value=";"/>
     <property name="os.version" value="10.0"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="file.encoding" value="Cp1252"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
-    <property name="localRepository" value="C:\Users\Manteniment\.m2\repository"/>
+    <property name="localRepository" value="C:\Users\formacio\.m2\repository"/>
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
-    <property name="java.io.tmpdir" value="C:\Users\MANTEN~1\AppData\Local\Temp\"/>
-    <property name="java.version" value="17.0.11"/>
-    <property name="user.dir" value="C:\Users\Manteniment\eclipse-workspace\sprint1-tasca5"/>
+    <property name="java.io.tmpdir" value="C:\Users\formacio\AppData\Local\Temp\"/>
+    <property name="java.version" value="15.0.2"/>
+    <property name="user.dir" value="C:\Users\formacio\Documents\juanra\Sprint1_Tasca5"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="sun.os.patch.level" value=""/>
-    <property name="native.encoding" value="Cp1252"/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk-17\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\AutoFirma\AutoFirma;C:\Program Files\Go\bin;C:\msys64\mingw64\bin;C:\Program Files\Git\cmd;C:\Program Files\Apache\apache-maven-3.9.8\bin;C:\Users\Manteniment\AppData\Local\Microsoft\WindowsApps;;C:\Users\Manteniment\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Manteniment\go\bin;."/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-15.0.2\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\ARX-3.9.1\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python310\Scripts\;C:\Python310\;C:\Program Files\AdoptOpenJDK\jdk-11.0.11.9-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Program Files\MongoDB\Server\5.0\bin;C:\Users\formacio\AppData\Roaming\Python\Python310\Scripts;C:\Users\formacio\AppData\Roaming\Python\Python310\Site-Packages;C:\Program Files\Go\bin;C:\Program Files\MySQL\MySQL Server 8.0;C:\ProgramData\MySQL\MySQL Server 8.0;C:\Program Files\MySQL\MySQL Workbench 8.0;C:\TDM-GCC-64\bin;C:\Users\formacio\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\Program Files\Redis\;C:\Users\formacio\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\formacio\AppData\Local\Programs\Python\Python311\;C:\Users\formacio\AppData\Local\Programs\Python\Launcher\;C:\Users\formacio\AppData\Local\Microsoft\WindowsApps;C:\Users\formacio\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\formacio\AppData\Roaming\npm;C:\Users\formacio\AppData\Local\Pandoc\;C:\Users\formacio\AppData\Local\Programs\MiKTeX\miktex\bin\x64\;C:\Program Files\MongoDB\Server\5.0\bin;C:\Users\formacio\go\bin;C:\Users\formacio\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.3.4\bin;;C:\Users\formacio\AppData\Local\GitHubDesktop\bin;C:\Program Files\Maven\apache-maven-3.9.8\bin;;."/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
     <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="java.vm.version" value="17.0.11+7-LTS-207"/>
+    <property name="java.vm.version" value="15.0.2+7-27"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
-    <property name="java.class.version" value="61.0"/>
+    <property name="java.class.version" value="59.0"/>
   </properties>
-  <testcase name="test1" classname="n1exercici1.AppTest" time="0.035"/>
-  <testcase name="test2" classname="n1exercici1.AppTest" time="0.009"/>
+  <testcase name="test1" classname="n1exercici1.AppTest" time="0.018"/>
+  <testcase name="test2" classname="n1exercici1.AppTest" time="0.005"/>
 </testsuite>

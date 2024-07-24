@@ -7,3 +7,14 @@ n1exercici1:
 	- Executar des de la carpeta del projecte 'java -jar target\sprint1-tasca5-1.jar' seguit de la ruta de la carpeta.
 	- prova de ruta relativa: java -jar target\sprint1-tasca5-1.jar target
 	- prova de ruta absoluta: java -jar target\sprint1-tasca5-1.jar c:\users
+	
+n1exercici2: Write at the end of the command the modifiers -a(show all contents), -t(show type of files), -d(show last modification date).
+	the commands can be combined as wished.
+	
+	example to get information of the current directory: java -jar target\sprint-tasca5-1.jar .\ -t -a -d
+	
+n1exercici3: use modifier -f to output the data to the file output.txt which will be created int the current directory.
+	
+	example: java -tar sprint-tasca5-1.jar ..\ -f -a
+	
+ 
