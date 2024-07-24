@@ -17,4 +17,7 @@ n1exercici3: use modifier -f to output the data to the file output.txt which wil
 	
 	example: java -tar sprint-tasca5-1.jar ..\ -f -a
 	
+n1exercici4: can read txt files. Use key word 'read' + the file path.
+	
+	example: java -tar sprint-tasca5-1.jar ..\ read .\output.txt
  
