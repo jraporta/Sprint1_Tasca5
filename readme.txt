@@ -25,3 +25,23 @@ n1exercici5: Can unserialize the last directory explored. Use keyword last + any
 	
 	exemple: java -jar target\sprint1-tasca5-1.jar last
  	exemple: java -jar target\sprint1-tasca5-1.jar last -t -a
+ 	
+ 	
+ 	
+ 	
+ Pendent:
+ 	Nivell2
+ 	- Exercici 1
+Executa l'exercici 3 del nivell anterior parametritzant tots els mètodes en un fitxer de configuració.
+
+Pots utilitzar un fitxer Java Properties, o bé la llibreria Apache Commons Configuration si ho prefereixes.
+
+De l'exercici anterior, parametritza el següent:
+
+Directori a llegir.
+Nom i directori del fitxer TXT resultant.
+Nivell 3
+- Exercici 1
+Crea una utilitat que encripti i desencripti els fitxers resultants dels nivells anteriors.
+
+Fes servir l'algorisme AES en manera de treball ECB o CBC amb mètode d'ompliment PKCS5Padding. Es pot emprar javax.crypto o bé org.apache.commons.crypto.

@@ -63,7 +63,7 @@ public class Directori extends Element {
 		}
 	}
 
-	public void showContent(App.Option... options) {
+	public void showContent(App.PropKeys... options) {
 		updateContent();
 		System.out.print(Element.getTreeDrawer().isEmpty() ? super.getPath() : "");
 		if (! this.elements.isEmpty()) {
@@ -74,7 +74,7 @@ public class Directori extends Element {
 					Element.getTreeDrawer().setLastItem();
 				}
 				printElementfromDirectory(this.elements.get(i), options);
-				if (Arrays.asList(options).contains(App.Option.ALL) &&
+				if (Arrays.asList(options).contains(App.PropKeys.ALL) &&
 						this.elements.get(i) instanceof Directori) {
 					((Directori) this.elements.get(i)).showContent(options);
 				}
@@ -88,13 +88,13 @@ public class Directori extends Element {
 		}		
 	}
 
-	private void printElementfromDirectory(Element element, App.Option... options) {
+	private void printElementfromDirectory(Element element, App.PropKeys... options) {
 		Element.getTreeDrawer().next();
 		System.out.printf("%n%s%s", Element.getTreeDrawer(), element.getNom());
-		if (Arrays.asList(options).contains(App.Option.TYPE)) {
+		if (Arrays.asList(options).contains(App.PropKeys.TYPE)) {
 			System.out.print(element instanceof Directori ? " (D)" : " (F)");
 		}
-		if (Arrays.asList(options).contains(App.Option.DATE)) {
+		if (Arrays.asList(options).contains(App.PropKeys.SHOW_DATE)) {
 			System.out.printf(" %s", element.getLastModified());
 		}
 	}
