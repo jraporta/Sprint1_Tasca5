@@ -21,7 +21,7 @@ n1exercici4: can read txt files. Use key word 'read' + the file path.
 	
 	example: java -jar target\sprint-tasca5-1.jar ..\ read .\output.txt
 	
-n1exercici5: remembers the last directory explored. Use keyword last + any combination of the modifiers listed above.
+n1exercici5: Can unserialize the last directory explored. Use keyword last + any combination of the modifiers listed above.
 	
 	exemple: java -jar target\sprint1-tasca5-1.jar last
  	exemple: java -jar target\sprint1-tasca5-1.jar last -t -a

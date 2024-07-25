@@ -1,4 +1,4 @@
-package n1exercici5;
+package n2exercici1;
 
 import java.io.IOException;
 import java.io.PrintStream;
