@@ -34,7 +34,9 @@ public class App {
 			}
 			break;
 		case "last":
+			readOptions(Arrays.copyOfRange(args, 1, args.length));
 			printDirectoryContent(Directori.unserialize());
+			break;
 		default:
 			path =	toPath(args[0]);
 			if(path == null || !Files.isDirectory(path)) {
@@ -100,7 +102,5 @@ public class App {
 		}
 		return path;
 	}
-	
-	
 
 }

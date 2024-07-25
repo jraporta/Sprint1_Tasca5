@@ -76,15 +76,12 @@ public class Element implements Comparable<Element> {
 
 	@Override
 	public String toString() {
-		return "Element [nom=" + nom + ", path=" + path + "]";
+		return this.getClass().getName() + " [nom=" + nom + ", path=" + path + "]";
 	}
 
 	@Override
 	public int compareTo(Element o) {
 		return this.nom.compareTo(o.nom);
 	}
-
-	
-	
 
 }

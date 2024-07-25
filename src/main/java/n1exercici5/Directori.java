@@ -4,7 +4,6 @@ package n1exercici5;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,9 +14,8 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-public class Directori extends Element implements Serializable{
+public class Directori extends Element {
 	
-	private static final long serialVersionUID = 1L;
 	private List<Element> elements;
 	private int nonAccessibleElements;	
 
@@ -102,29 +100,33 @@ public class Directori extends Element implements Serializable{
 	}
 
 	public void serialize() {
-		System.out.println("\n Serializing object...");
-		try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(Files.newOutputStream(Path.of("save.ser"), StandardOpenOption.CREATE, StandardOpenOption.WRITE ))){
-			objectOutputStream.writeObject(this);
+		serializeObj(super.getPath().toString());
+	}
+
+	public static Directori unserialize() {
+		return new Directori(Path.of((String) unserializeObj()));
+	}
+	
+	private static Object serializeObj(Object obj) {
+		try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(Files.newOutputStream(Path.of("last.ser"), StandardOpenOption.CREATE, StandardOpenOption.WRITE ))){
+			objectOutputStream.writeObject(obj);
+			objectOutputStream.flush();
 		} catch (IOException e) {
 			System.err.println("Error serializing the Directori object: " + e.getMessage());
 			e.printStackTrace();
 		}
-		
+		return obj;
 	}
-
-	public static Directori unserialize() {
-		Directori directori = null;
-		System.out.println("\n unserializing object...");
-		try (ObjectInputStream objectInputStream = new ObjectInputStream(Files.newInputStream(Path.of("save.ser")))){
-			Object obj = objectInputStream.readObject();
-			directori = (Directori) obj;
+	
+	private static Object unserializeObj() {
+		Object obj = null;
+		try (ObjectInputStream objectInputStream = new ObjectInputStream(Files.newInputStream(Path.of("last.ser")))){
+			obj = objectInputStream.readObject();
 		} catch (Exception e) {
-			System.err.println("Error unserializing the Directori object: " + e.getMessage());
+			System.err.println("Error unserializing the object: " + e.getMessage());
 			e.printStackTrace();
 		}
-		return directori;
+		return obj;
 	}
-	
-	
 
 }

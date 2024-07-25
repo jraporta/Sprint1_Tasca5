@@ -15,9 +15,13 @@ n1exercici2: Write at the end of the command the modifiers -a(show all contents)
 	
 n1exercici3: use modifier -f to output the data to the file output.txt which will be created int the current directory.
 	
-	example: java -tar sprint-tasca5-1.jar ..\ -f -a
+	example: java -jar target\sprint-tasca5-1.jar ..\ -f -a
 	
 n1exercici4: can read txt files. Use key word 'read' + the file path.
 	
-	example: java -tar sprint-tasca5-1.jar ..\ read .\output.txt
- 
+	example: java -jar target\sprint-tasca5-1.jar ..\ read .\output.txt
+	
+n1exercici5: remembers the last directory explored. Use keyword last + any combination of the modifiers listed above.
+	
+	exemple: java -jar target\sprint1-tasca5-1.jar last
+ 	exemple: java -jar target\sprint1-tasca5-1.jar last -t -a
