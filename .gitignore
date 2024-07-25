@@ -1,1 +1,4 @@
 /target/
+*.properties
+*.ser
+output.txt

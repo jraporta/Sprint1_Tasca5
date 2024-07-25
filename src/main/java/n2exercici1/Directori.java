@@ -2,6 +2,7 @@ package n2exercici1;
 
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.UncheckedIOException;
@@ -9,7 +10,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -63,7 +63,7 @@ public class Directori extends Element {
 		}
 	}
 
-	public void showContent(App.PropKeys... options) {
+	public void showContent() {
 		updateContent();
 		System.out.print(Element.getTreeDrawer().isEmpty() ? super.getPath() : "");
 		if (! this.elements.isEmpty()) {
@@ -73,10 +73,10 @@ public class Directori extends Element {
 				if(i == this.elements.size() - 1) {
 					Element.getTreeDrawer().setLastItem();
 				}
-				printElementfromDirectory(this.elements.get(i), options);
-				if (Arrays.asList(options).contains(App.PropKeys.ALL) &&
+				printElementfromDirectory(this.elements.get(i));
+				if (App.propIsTrue(App.PropKeys.SHOW_TREE) &&
 						this.elements.get(i) instanceof Directori) {
-					((Directori) this.elements.get(i)).showContent(options);
+					((Directori) this.elements.get(i)).showContent();
 				}
 			}
 			if(this.nonAccessibleElements > 0) {
@@ -91,10 +91,10 @@ public class Directori extends Element {
 	private void printElementfromDirectory(Element element, App.PropKeys... options) {
 		Element.getTreeDrawer().next();
 		System.out.printf("%n%s%s", Element.getTreeDrawer(), element.getNom());
-		if (Arrays.asList(options).contains(App.PropKeys.TYPE)) {
+		if (App.propIsTrue(App.PropKeys.SHOW_TYPE)) {
 			System.out.print(element instanceof Directori ? " (D)" : " (F)");
 		}
-		if (Arrays.asList(options).contains(App.PropKeys.SHOW_DATE)) {
+		if (App.propIsTrue(App.PropKeys.SHOW_DATE)) {
 			System.out.printf(" %s", element.getLastModified());
 		}
 	}
@@ -104,7 +104,11 @@ public class Directori extends Element {
 	}
 
 	public static Directori unserialize() {
-		return new Directori(Path.of((String) unserializeObj()));
+		Object obj = unserializeObj();
+		if (obj == null) {
+			return null;
+		}
+		return new Directori(Path.of((String) obj));
 	}
 	
 	private static Object serializeObj(Object obj) {
@@ -120,11 +124,11 @@ public class Directori extends Element {
 	
 	private static Object unserializeObj() {
 		Object obj = null;
-		try (ObjectInputStream objectInputStream = new ObjectInputStream(Files.newInputStream(Path.of("last.ser")))){
-			obj = objectInputStream.readObject();
+		try (InputStream inputStream = Files.newInputStream(Path.of("last.ser"));
+				ObjectInputStream input = new ObjectInputStream(inputStream)){
+			obj = input.readObject();
 		} catch (Exception e) {
 			System.err.println("Error unserializing the object: " + e.getMessage());
-			e.printStackTrace();
 		}
 		return obj;
 	}
