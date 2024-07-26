@@ -32,15 +32,11 @@ public class Directori extends Element {
 		this(path.getFileName().toString(),path);
 	}
 
-	public Element getElement(int i) {
-		return elements.get(i);
-	}
-
-	public void setElement(Element element) {
+	private void setElement(Element element) {
 		this.elements.add(element);
 	}
 
-	public void updateContent() {
+	private void updateContent() {
 		super.checkIsStillThere();
 		this.elements.clear();
 		this.nonAccessibleElements = 0;
