@@ -5,6 +5,14 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 public class Fitxer extends Element {
 
@@ -18,39 +26,53 @@ public class Fitxer extends Element {
 	public Fitxer(Path path) {
 		this(path.getFileName().toString(),path);
 	}
-
-	public boolean isReadableTxtFile() {
+	
+	public boolean isReadableFile() {
+		boolean b = false;
 		if (Files.isReadable(super.getPath())) {
-			//Files.getAttribute(getPath(), getLastModified());
+			b = true;
 		}
-		return true;
+		return b;
 	}
 
-	public static boolean printTxtFileContent(Path path) {
-		boolean success = false;
-		try {
-			if(Files.probeContentType(path).equalsIgnoreCase("text/plain")) {
-				try(BufferedReader reader = Files.newBufferedReader(path)){
-					String s = "Showing content of file:";
-					do {
-						System.out.println(s);
-						s = reader.readLine();
-					}
-					while(s != null);
-					success = true;
+	public boolean isReadableTxtFile() {
+		boolean b = false;
+		if (this.isReadableFile()) {
+			try {
+				if(Files.probeContentType(super.getPath()).equalsIgnoreCase("text/plain")) {
+					b = true;
 				}
+			} catch (IOException e) {
+				System.out.printf("Error checking if the type of the file: %s", e.getMessage());
 			}
-		} catch (Exception e) {
-			System.err.println("Error trying to determine the file type: " + e.getMessage());
+		}
+		return b;
+	}
+
+	public boolean printTxtFileContent() {
+		boolean success = false;
+		try(BufferedReader reader = Files.newBufferedReader(super.getPath())){
+			String s = "Showing content of file:";
+			do {
+				System.out.println(s);
+				s = reader.readLine();
+			}
+			while(s != null);
+			success = true;
+		}catch (Exception e) {
+			System.err.println("Error reading from the file: " + e.getMessage());
 		}
 		return success;
 	}
 	
 	public Path encrypt(String password, String output) {
 		Path outputPath = Path.of(output).normalize();
+	
 		try {
 			Crypto.encryptFile(super.getPath(), outputPath, password);
-		} catch (Exception e) {
+		} catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeySpecException
+				| InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException
+				| IOException e) {
 			output = null;
 			System.out.printf("Error encrypting the file: %s%n", e.getMessage());
 		}

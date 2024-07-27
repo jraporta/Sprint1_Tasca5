@@ -9,6 +9,8 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.Properties;
 
+import javax.crypto.Cipher;
+
 import utilitats.Entrada;
 
 import java.nio.charset.StandardCharsets;
@@ -46,11 +48,36 @@ public class App {
 				break;
 			case "-h":
 				System.out.printf("Valid arguments are:%n -'read' followed by a path"
-						+ "%n -'dir' optionally followed by a path.%n -'config'");
+						+ "%n -'dir' optionally followed by a path.%n -'config'%n -'encrypt'/'decrypt' + file path");
+				break;
+			case "encrypt":
+				encrypt(args[1], Cipher.ENCRYPT_MODE);
+				break;
+			case "decrypt":
+				encrypt(args[1], Cipher.DECRYPT_MODE);
 				break;
 			default:
 				System.out.printf("Not a valid argument. Type '-h' for help");
 			}
+		}
+	}
+
+
+	private static void encrypt(String input, int encryptMode) {
+		Path path =	toValidPath(input);
+		Fitxer file = new Fitxer(path);
+		if (file.isReadableFile()) {
+			String password = Entrada.llegirString("Write the password:");
+			if(encryptMode == Cipher.ENCRYPT_MODE) {
+				file.encrypt(password, file.getPath() + ".secret");
+			}else if(encryptMode == Cipher.DECRYPT_MODE) {
+				String output = file.getPath().toString().substring(0, file.getPath().toString().lastIndexOf("."));
+				file.decrypt(password, output);
+			}else {
+				throw new RuntimeException("Not a valid mode;");
+			}
+		}else {
+			System.out.printf("%s cannot be read", input); 
 		}
 	}
 
@@ -114,9 +141,12 @@ public class App {
 
 	private static void readTxtFile(String string) {
 		Path path =	toValidPath(string);
-		if (!Fitxer.printTxtFileContent(path)) {
-			System.out.printf("%s is not a valid directory path", string); 
-		}		
+		Fitxer file = new Fitxer(path);
+		if (file.isReadableTxtFile()) {
+			file.printTxtFileContent();
+		} else {
+			System.out.printf("%s is not a Text File", string);
+		}
 	}
 	
 	
