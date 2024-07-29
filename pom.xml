@@ -27,7 +27,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>n2exercici1.App</mainClass>
+                            <mainClass>n3exercici1.App</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
