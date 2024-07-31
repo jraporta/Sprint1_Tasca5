@@ -59,7 +59,7 @@ public class Directori extends Element{
 		}
 	}
 
-	public Object mostraContingut() {
+	public String mostraContingut() {
 		String resposta = String.format("%s\\", super.getPath());
 		Collections.sort(this.elements);
 		for (int i = 0; i < this.elements.size() - 1; i++) {

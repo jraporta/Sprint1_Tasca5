@@ -19,7 +19,7 @@ public class Directori extends Element{
 	public Directori(String nom, Path path) {
 		super(nom, path);
 		if (!Files.isDirectory(path)){
-			throw new UncheckedIOException(new IOException("path does not point to a directory"));
+			throw new PathNotADirectoryException(new IOException("path does not point to a directory"));
 		}
 		this.elements = new ArrayList<Element>();
 		this.nonAccessibleElements = 0;
@@ -55,7 +55,7 @@ public class Directori extends Element{
 				}
 			}
 		} catch (IOException e) {
-			throw new UncheckedIOException(String.format(
+			throw new ExploreFolderContentsException(String.format(
 					"Error ''impossible'' al provar d'explorar els continguts de la carpeta %s", super.getPath()),e);
 		}
 	}
@@ -94,6 +94,38 @@ public class Directori extends Element{
 		if (Arrays.asList(options).contains(App.Option.DATE)) {
 			System.out.printf(" %s", element.getLastModified());
 		}
+	}
+	
+	public class PathNotADirectoryException extends UncheckedIOException{
+
+		private static final long serialVersionUID = 1L;
+
+		public PathNotADirectoryException(IOException cause) {
+			super(cause);
+		}
+		
+		public PathNotADirectoryException(String message, IOException cause) {
+			super(message, cause);
+			// TODO Auto-generated constructor stub
+		}
+		
+	}
+	
+	public class ExploreFolderContentsException extends UncheckedIOException{
+
+		public ExploreFolderContentsException(IOException cause) {
+			super(cause);
+		}
+		
+		public ExploreFolderContentsException(String message, IOException cause) {
+			super(message, cause);
+			// TODO Auto-generated constructor stub
+		}
+
+		private static final long serialVersionUID = 1L;
+
+		
+		
 	}
 	
 	

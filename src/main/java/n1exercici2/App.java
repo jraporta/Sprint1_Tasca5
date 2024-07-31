@@ -10,8 +10,27 @@ import java.util.List;
 public class App {
 	
 	public static enum Option{
-		ALL ,TYPE, DATE
+		ALL("-a", "-A") ,
+		TYPE("-t", "-T"),
+		DATE("-d", "-D");
+		
+		private final List<String>flags;
+		
+		Option(String...flags){
+			this.flags = Arrays.asList(flags);
+		}
+		
+		public static Option fromFlag(String flag) {
+			for (Option option : values()) {
+				if (option.flags.contains(flag)) {
+					return option;
+				}
+			}
+			return null;
+		}
+		
 	}
+	
 	private static List<Option> options = new ArrayList<Option>();
 
 	public static void main(String[] args) {
@@ -36,16 +55,9 @@ public class App {
 	
 	private static void readOptions(String[] args) {
 		for(String arg : args) {
-			switch (arg) {
-			case "-d": case "-D":
-				options.add(App.Option.DATE);
-				break;
-			case "-t": case "-T":
-				options.add(App.Option.TYPE);
-				break;
-			case "-a": case "-A":
-				options.add(App.Option.ALL);
-				break;
+			Option option = Option.fromFlag(arg);
+			if (option != null) {
+				options.add(option);
 			}	
 		}
 	}
